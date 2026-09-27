@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CounselGrid LLC — every enquiry answered before it goes cold</title>
+<meta name="description" content="CounselGrid LLC builds solo and small law firms a new enquiry form that checks itself, plus a one page follow-up board showing every open enquiry, its stage and the fee at risk.">
+<link rel="icon" href="images/logo.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F7F2E9;
+    --ink:#101418;
+    --amber:#E08A00;
+    --navy:#12233F;
+    --inknavy:#0B1626;
+    --logoDarkBg:#0D1929;
+    --line:#DED5C4;
+    --head:"Fraunces",Georgia,serif;
+    --body:"Inter",system-ui,-apple-system,Segoe UI,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    background:var(--cream);color:var(--ink);
+    font-family:var(--body);font-size:19px;line-height:1.65;
+    overflow-x:hidden;
+  }
+  img{display:block;max-width:100%;height:auto}
+  p,li{max-width:68ch}
+  h1,h2,h3{font-family:var(--head);font-weight:700;line-height:1.1;letter-spacing:-0.015em}
+  a{color:inherit}
+  .wrap{width:100%;max-width:1180px;margin:0 auto;padding:0 28px}
+  .rule{width:96px;height:6px;background:var(--amber);border-radius:3px}
+  .eyebrow{
+    font-size:13px;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--amber);font-weight:600;margin-bottom:22px;
+  }
+
+  /* ---------- header ---------- */
+  .site-head{background:var(--cream);padding:22px 0}
+  .site-head .wrap{display:flex;align-items:center;gap:16px}
+  .site-head img{height:40px;width:auto;mix-blend-mode:multiply}
+  .site-head span{font-family:var(--head);font-weight:700;font-size:19px;letter-spacing:-0.01em}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;background:var(--cream);min-height:min(92vh,900px);display:flex;align-items:center;overflow:hidden}
+  .hero__bg{position:absolute;inset:0}
+  .hero__bg img{width:100%;height:100%;object-fit:cover;object-position:center 45%}
+  .hero__scrim{position:absolute;inset:0;background:linear-gradient(90deg,rgba(247,242,233,.98) 0%,rgba(247,242,233,.95) 36%,rgba(247,242,233,.6) 57%,rgba(247,242,233,0) 78%)}
+  .hero__inner{position:relative;z-index:1;padding-top:56px;padding-bottom:56px}
+  .hero__copy{max-width:620px}
+  .hero h1{font-size:clamp(38px,4.4vw,64px);margin-bottom:24px}
+  .hero h1 .accent{color:var(--amber)}
+  .lede{font-size:20px;max-width:50ch;color:#2B3038;margin-bottom:34px}
+
+  /* ---------- buttons ---------- */
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:10px;
+    min-height:52px;padding:15px 28px;border-radius:999px;
+    font-family:var(--body);font-weight:600;font-size:17px;
+    text-decoration:none;border:2px solid transparent;cursor:pointer;
+  }
+  .btn--primary{background:var(--amber);color:#1A1206}
+  .btn--primary:hover{background:#C97C00}
+  .btn--ghost{border-color:var(--navy);color:var(--navy);background:transparent}
+  .btn--ghost:hover{background:rgba(18,35,63,.06)}
+
+  /* ---------- problem ---------- */
+  .problem{padding:96px 0;background:var(--cream)}
+  .problem .wrap{max-width:900px}
+  .problem p{font-family:var(--head);font-size:clamp(26px,2.9vw,42px);line-height:1.28;margin-bottom:26px}
+  .problem p:last-child{margin-bottom:0;color:var(--amber)}
+
+  /* ---------- full width picture band ---------- */
+  .band{margin:0;background:var(--inknavy)}
+  .band img{width:100%;height:clamp(300px,42vw,560px);object-fit:cover;object-position:center 58%}
+
+  /* ---------- services ---------- */
+  .services{padding:110px 0}
+  .services h2{font-size:clamp(30px,3.4vw,50px);margin-bottom:18px}
+  .services__intro{color:#2B3038;margin-bottom:56px}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .card{
+    background:#FFFDF8;border:1px solid var(--line);border-radius:20px;
+    padding:38px 34px;
+  }
+  .card svg{width:30px;height:30px;margin-bottom:22px;color:var(--navy)}
+  .card h3{font-size:26px;margin-bottom:14px}
+  .card p{font-size:18px;color:#3A4048}
+  .price{
+    margin-top:56px;font-family:var(--head);font-weight:700;
+    font-size:clamp(26px,2.6vw,38px);
+  }
+  .price em{font-style:normal;color:var(--amber)}
+  .price-note{margin-top:8px;font-size:18px;color:#4A5058}
+
+  /* ---------- steps ---------- */
+  .steps{padding:96px 0;background:rgba(18,35,63,.04)}
+  .steps h2{font-size:clamp(30px,3.4vw,50px);margin-bottom:48px}
+  .steps ol{list-style:none;display:grid;gap:26px;max-width:860px}
+  .steps li{display:flex;gap:22px;align-items:flex-start;font-size:20px}
+  .steps .num{
+    flex:0 0 auto;width:46px;height:46px;border-radius:50%;
+    background:var(--navy);color:var(--cream);
+    display:flex;align-items:center;justify-content:center;
+    font-family:var(--head);font-weight:700;font-size:20px;
+  }
+
+  /* ---------- board mockup ---------- */
+  .board{padding:110px 0;background:linear-gradient(160deg,var(--navy) 0%,var(--inknavy) 100%)}
+  .board__panel{
+    background:var(--inknavy);border:1px solid rgba(247,242,233,.14);
+    border-radius:22px;padding:44px 46px;max-width:900px;margin:0 auto;
+    color:var(--cream);
+  }
+  .board__panel h2{font-size:28px;margin-bottom:8px}
+  .board__panel .sub{font-size:16px;opacity:.72;margin-bottom:34px}
+  .board__row{
+    display:flex;align-items:center;justify-content:space-between;gap:20px;
+    padding:18px 0;border-top:1px solid rgba(247,242,233,.12);
+  }
+  .board__row:first-of-type{border-top:0}
+  .board__row span{font-size:18px}
+  .chip{
+    font-size:14px;letter-spacing:.04em;padding:7px 14px;border-radius:999px;
+    border:1px solid rgba(224,138,0,.55);color:var(--amber);white-space:nowrap;
+  }
+  .board__foot{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin-top:34px}
+  .board__foot .label{font-size:15px;letter-spacing:.1em;text-transform:uppercase;opacity:.75}
+  .board__foot svg{width:190px;height:56px;color:var(--amber)}
+
+  /* ---------- about ---------- */
+  .about{padding:110px 0}
+  .about .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:56px;align-items:center}
+  .about__media img{border-radius:20px;width:100%}
+  .about__name{display:flex;align-items:center;gap:18px;margin-bottom:26px}
+  .about__name img{width:64px;height:64px;border-radius:50%;object-fit:cover}
+  .about__name h2{font-size:clamp(28px,3vw,42px)}
+  .about p{font-size:20px;color:#2B3038}
+
+  /* ---------- quote slot ---------- */
+  .quote{padding:80px 0;background:var(--cream)}
+  .quote blockquote{
+    font-family:var(--head);font-size:clamp(24px,2.6vw,36px);line-height:1.3;
+    border-left:6px solid var(--amber);padding-left:28px;max-width:840px;
+  }
+  .quote cite{display:block;margin-top:20px;padding-left:34px;font-style:normal;font-size:17px;color:#4A5058}
+
+  /* ---------- contact ---------- */
+  .contact{padding:110px 0 120px}
+  .contact h2{font-size:clamp(30px,3.4vw,50px);margin-bottom:18px}
+  .contact p{color:#2B3038;margin-bottom:44px}
+  .contact__actions{display:flex;flex-direction:column;align-items:flex-start;gap:16px}
+  .contact__actions .btn{width:100%;max-width:420px;justify-content:center}
+  .contact__actions .btn--primary{font-size:19px;min-height:60px}
+
+  /* ---------- footer ---------- */
+  .site-foot{background:var(--logoDarkBg);color:var(--cream);padding:56px 0}
+  .site-foot .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+  .site-foot img{height:52px;width:auto}
+  .site-foot p{font-size:15px;opacity:.8;max-width:none}
+  .site-foot a{color:var(--amber);text-decoration:none}
+  .site-foot a:hover{text-decoration:underline}
+
+  /* ---------- small screens ---------- */
+  @media (max-width:900px){
+    .hero{min-height:88vh;align-items:flex-end}
+    .hero__scrim{background:linear-gradient(180deg,rgba(247,242,233,0) 0%,rgba(247,242,233,.5) 40%,rgba(247,242,233,.96) 70%,rgba(247,242,233,1) 100%)}
+    .hero__inner{padding-top:0;padding-bottom:48px}
+    .hero__copy{max-width:100%}
+    .cards{grid-template-columns:1fr}
+    .about .wrap{grid-template-columns:1fr;gap:36px}
+    .about__media{max-width:62%}
+  }
+  @media (max-width:640px){
+    body{font-size:18px}
+    .wrap{padding:0 20px}
+    .site-head{padding:16px 0}
+    .hero{padding-bottom:0}
+    .problem,.services,.steps,.board,.about,.quote,.contact{padding-top:56px;padding-bottom:56px}
+    .card{padding:30px 26px}
+    .btn{width:100%}
+    .board__panel{padding:32px 26px}
+    .board__row{flex-direction:column;align-items:flex-start;gap:10px}
+    .chip{white-space:normal}
+    .board__foot{flex-direction:column;align-items:flex-start}
+    .about__media{max-width:100%}
+    .quote blockquote{padding-left:20px}
+    .quote cite{padding-left:26px}
+  }
+</style>
+</head>
+<body>
+
+<header class="site-head">
+  <div class="wrap">
+    <img src="images/logo.jpg" width="1024" height="1024" alt="CounselGrid LLC logo" onerror="this.style.display='none'">
+    <span>CounselGrid LLC</span>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero__bg">
+    <img src="images/speaking.jpg" width="1376" height="768" alt="Pravin Patel at a desk talking a client through a rising follow-up chart on a laptop" onerror="this.style.display='none'">
+    <span class="hero__scrim"></span>
+  </div>
+  <div class="wrap hero__inner">
+    <div class="hero__copy">
+      <p class="eyebrow">For solo and small law firms</p>
+      <h1>CounselGrid LLC &mdash; every enquiry answered <span class="accent">before it goes cold</span>.</h1>
+      <p class="lede">I build solo and small law firms a new enquiry form that checks itself, plus a one page follow-up board showing every open enquiry, its stage and the fee at risk.</p>
+      <a class="btn btn--primary" href="https://cal.com/mail-prp/20-minute-intro-cal">Book a 20 minute call</a>
+    </div>
+  </div>
+</section>
+
+<section class="problem">
+  <div class="wrap">
+    <p>An enquiry arrives at night, or while the office is busy.</p>
+    <p>No one calls back.</p>
+    <p>The person signs with the next firm.</p>
+    <p>Every quiet enquiry is a matter worth thousands in fees.</p>
+  </div>
+</section>
+
+<section class="band">
+  <img src="images/shot-1.jpg" width="1024" height="1024" alt="Pravin and a fee earner looking at the follow-up board on a laptop, with enquiries and the fee at risk" onerror="this.style.display='none'">
+</section>
+
+<section class="services">
+  <div class="wrap">
+    <h2>What I do about it</h2>
+    <p class="services__intro">Three pieces of work, built for the way a small firm actually runs.</p>
+    <div class="cards">
+      <div class="card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4"/><path d="M9.6 14.2l1.8 1.8 3.4-3.6"/></svg>
+        <h3>New enquiry intake that checks itself</h3>
+        <p>A form that checks the name, a phone or email, and the practice area before the enquiry is accepted.</p>
+      </div>
+      <div class="card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 13h6M8 16.5h4"/></svg>
+        <h3>Enquiry follow-up board with fee at risk</h3>
+        <p>One page showing every open enquiry, its stage and the fee at risk, so nothing sits unseen.</p>
+      </div>
+      <div class="card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 11h11M4 16h7"/><circle cx="18.5" cy="16.5" r="3.2"/><path d="M18.5 15.4v1.4l1 .7"/></svg>
+        <h3>Morning rules digest for the firm</h3>
+        <p>A short morning digest that tells the firm what to do first that day.</p>
+      </div>
+    </div>
+    <p class="price">$1,000 setup + $500 a month</p>
+    <p class="price-note">One price. It covers everything the three projects do.</p>
+  </div>
+</section>
+
+<section class="steps">
+  <div class="wrap">
+    <h2>How it works</h2>
+    <ol>
+      <li><span class="num">1</span><span>I build the firm a new enquiry form that checks itself.</span></li>
+      <li><span class="num">2</span><span>Every open enquiry lands on a one page follow-up board showing its stage and the fee at risk.</span></li>
+      <li><span class="num">3</span><span>A morning rules digest tells the firm what to do first.</span></li>
+    </ol>
+  </div>
+</section>
+
+<section class="board">
+  <div class="wrap">
+    <div class="board__panel">
+      <h2>The follow-up board</h2>
+      <p class="sub">One page, opened each morning. Every open enquiry, and where it has got to.</p>
+      <div class="board__row"><span>New enquiry, checked and recorded</span><span class="chip">New</span></div>
+      <div class="board__row"><span>Called back the same day</span><span class="chip">Contacted</span></div>
+      <div class="board__row"><span>Consultation in the diary</span><span class="chip">Consultation booked</span></div>
+      <div class="board__foot">
+        <span class="label">Fee at risk</span>
+        <svg viewBox="0 0 190 56" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 48L38 40 70 30 104 32 138 18 186 6"/></svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about">
+  <div class="wrap">
+    <div class="about__media">
+      <img src="images/working.jpg" width="896" height="1200" alt="Pravin Patel working at a counter with the CounselGrid LLC board open on a laptop" onerror="this.style.display='none'">
+    </div>
+    <div class="about__copy">
+      <div class="about__name">
+        <img src="images/profile.jpg" width="1024" height="1024" alt="Portrait of Pravin Patel" onerror="this.style.display='none'">
+        <h2>Pravin Patel</h2>
+      </div>
+      <p>I watched small firms lose good matters to a slow callback, so I built the form and the board that answer first.</p>
+    </div>
+  </div>
+</section>
+
+<section class="quote">
+  <div class="wrap">
+    <blockquote>Professional and Reliable service</blockquote>
+    <cite>Sam Walton, Walton LLC</cite>
+  </div>
+</section>
+
+<section class="contact">
+  <div class="wrap">
+    <h2>Start here</h2>
+    <p>Book the call, or send a message. Whichever is easier.</p>
+    <div class="contact__actions">
+      <a class="btn btn--primary" href="https://cal.com/mail-prp/20-minute-intro-cal">Book a 20 minute call</a>
+      <a class="btn btn--ghost" href="https://wa.me/17329832100?text=Hello%20Pravin%2C%20I%20found%20CounselGrid%20LLC%20and%20I%27d%20like%20to%20talk%20about%20slow%20enquiry%20follow-up.">Message me on WhatsApp</a>
+      <a class="btn btn--ghost" href="mailto:mailprp@yahoo.com?subject=CounselGrid%20LLC%20%E2%80%94%20enquiry%20follow-up%20for%20my%20firm">Email me</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <img src="images/logo-dark.jpg" width="1024" height="1024" alt="CounselGrid LLC logo" onerror="this.style.display='none'">
+    <p>CounselGrid LLC · <a href="mailto:mailprp@yahoo.com">mailprp@yahoo.com</a> · <a href="https://wa.me/17329832100">WhatsApp</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
